@@ -13,7 +13,7 @@ const app = new Hono().get(
       cursor: z.string().optional(),
       limit: z.coerce.number().positive().default(10),
       searchTerm: z.string().optional(),
-    })
+    }),
   ),
   async (c) => {
     try {
@@ -24,13 +24,14 @@ const app = new Hono().get(
       const products: Product[] = sampleProductData;
 
       // add delay to mimic data fetching from database
+      await new Promise((resolve) => setTimeout(resolve, 500)); // 500ms delay
 
       // filter products based on search query
       let filteredProducts = products.filter((product: Product) =>
         searchTerm
           ? product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
             product.productCode.toLowerCase().includes(searchTerm.toLowerCase())
-          : true
+          : true,
       );
 
       // sort products by name and id
@@ -44,12 +45,12 @@ const app = new Hono().get(
       // handle pagination using cursor
       if (cursor) {
         const { lastName, lastId } = JSON.parse(
-          Buffer.from(cursor, "base64").toString("utf-8")
+          Buffer.from(cursor, "base64").toString("utf-8"),
         );
         filteredProducts = filteredProducts.filter(
           (product: Product) =>
             product.name > lastName ||
-            (product.name === lastName && product.id > lastId)
+            (product.name === lastName && product.id > lastId),
         );
       }
 
@@ -72,7 +73,7 @@ const app = new Hono().get(
             JSON.stringify({
               lastName: paginatedItems[limit - 1].name,
               lastId: paginatedItems[limit - 1].id,
-            })
+            }),
           ).toString("base64")
         : null;
 
@@ -84,7 +85,7 @@ const app = new Hono().get(
       console.error("Error fetching products:", error);
       return c.json({ error: "Internal server error" }, 500);
     }
-  }
+  },
 );
 
 export default app;
