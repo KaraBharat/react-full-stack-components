@@ -3,7 +3,7 @@
 import React from "react";
 import CollectionForm from "./components/collection-form";
 
-const ProductSelectionDemo = () => {
+const CollectionFormDemo = () => {
   return (
     <div className="flex w-full flex-col justify-center">
       <div className="flex flex-col p-4">
@@ -18,4 +18,4 @@ const ProductSelectionDemo = () => {
   );
 };
 
-export default ProductSelectionDemo;
+export default CollectionFormDemo;
