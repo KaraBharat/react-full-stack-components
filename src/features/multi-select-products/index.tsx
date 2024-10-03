@@ -28,7 +28,7 @@ const ProductSelectionForm = () => {
   };
 
   return (
-    <div className="flex flex-col gap-4 p-4 w-full">
+    <div className="flex w-full flex-col gap-4 p-4">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div className="flex flex-col gap-4 overflow-y-auto p-2">
           <div className="space-y-2">
@@ -39,7 +39,7 @@ const ProductSelectionForm = () => {
             )}
           </div>
 
-          <div className="flex items-start flex-col justify-between gap-4">
+          <div className="flex flex-col items-start justify-between gap-4">
             <Label htmlFor="products">Products *</Label>
             <Controller
               name="products"

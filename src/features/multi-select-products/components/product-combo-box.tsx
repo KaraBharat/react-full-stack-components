@@ -87,12 +87,12 @@ const ProductCombobox = ({ value, onChange }: ProductCombobox) => {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[--radix-popover-trigger-width] p-0">
-        <div className="w-full flex flex-col">
+        <div className="flex w-full flex-col">
           <div className="relative w-full">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-full w-4 opacity-50" />
+            <Search className="absolute left-3 top-1/2 h-full w-4 -translate-y-1/2 opacity-50" />
             <Input
               placeholder="Search products..."
-              className="w-full border-none pl-10 focus:outline-none outline-none active:outline-none focus:ring-offset-0 ring-offset-0 focus-visible:ring-offset-0 focus-visible:ring-0"
+              className="w-full border-none pl-10 outline-none ring-offset-0 focus:outline-none focus:ring-offset-0 focus-visible:ring-0 focus-visible:ring-offset-0 active:outline-none"
               value={searchTerm}
               onChange={(e) => {
                 handleSearch(e.target.value);
@@ -102,29 +102,29 @@ const ProductCombobox = ({ value, onChange }: ProductCombobox) => {
           <Separator />
           <div
             ref={containerRef}
-            className="w-full flex flex-col max-h-[300px] overflow-y-auto"
+            className="flex max-h-[300px] w-full flex-col overflow-y-auto"
             onScroll={handleScroll}
           >
             {productsToShow.length > 0 &&
               productsToShow.map((product) => (
                 <div
                   key={product.id}
-                  className="flex items-center px-2 py-2 cursor-pointer hover:bg-gray-100 w-full"
+                  className="flex w-full cursor-pointer items-center px-2 py-2 hover:bg-gray-100"
                   onClick={() => handleSelect(product.id)}
                 >
                   <Check
                     className={cn(
                       "mr-2 h-4 w-4",
-                      value.includes(product.id) ? "opacity-100" : "opacity-0"
+                      value.includes(product.id) ? "opacity-100" : "opacity-0",
                     )}
                   />
                   <div className="flex items-center gap-2">
-                    <div className="size-6 relative">
+                    <div className="relative size-6">
                       <Image
                         src={product.mainImage}
                         alt={product.name}
                         fill
-                        className="rounded-full object-cover size-6"
+                        className="size-6 rounded-full object-cover"
                       />
                     </div>
                     <span>{product.name}</span>
@@ -132,17 +132,17 @@ const ProductCombobox = ({ value, onChange }: ProductCombobox) => {
                 </div>
               ))}
             {(isFetchingNextPage || isLoading || isFetching) && (
-              <div className="flex justify-center p-2 w-full">
+              <div className="flex w-full justify-center p-2">
                 <Loader2 className="size-4 animate-spin" />
               </div>
             )}
             {!hasNextPage && !isLoading && productsToShow.length > 0 && (
-              <div className="text-center p-2 text-sm text-gray-500 w-full">
+              <div className="w-full p-2 text-center text-sm text-gray-500">
                 No more products to load.
               </div>
             )}
             {!isLoading && productsToShow.length === 0 && (
-              <div className="text-center p-2 text-sm text-gray-500 w-full">
+              <div className="w-full p-2 text-center text-sm text-gray-500">
                 No products found.
               </div>
             )}

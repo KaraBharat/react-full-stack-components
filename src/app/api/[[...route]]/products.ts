@@ -23,6 +23,8 @@ const app = new Hono().get(
       // read data from JSON file
       const products: Product[] = sampleProductData;
 
+      // add delay to mimic data fetching from database
+
       // filter products based on search query
       let filteredProducts = products.filter((product: Product) =>
         searchTerm
