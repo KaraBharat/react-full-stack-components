@@ -30,7 +30,7 @@ const app = new Hono().get(
       let filteredProducts = products.filter((product: Product) =>
         searchTerm
           ? product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            product.productCode.toLowerCase().includes(searchTerm.toLowerCase())
+            product.productCode?.toLowerCase().includes(searchTerm.toLowerCase())
           : true,
       );
 

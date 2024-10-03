@@ -7,8 +7,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Multi select dropdown",
-  description: "Multi select dropdown",
+  title: "Multi Select Combo Box",
+  description:
+    "This combo box allows you to select multiple products from a list Start typing to search and make your selections.",
 };
 
 export default function RootLayout({

@@ -14,10 +14,11 @@ import Image from "next/image";
 import { useProducts } from "../hooks/use-products";
 import { useDebounce } from "@uidotdev/usehooks";
 import { cn } from "@/lib/utils";
+import { Product } from "@/types/product";
 
 interface ProductCombobox {
-  value: string[];
-  onChange: (value: string[]) => void;
+  value: Product[];
+  onChange: (value: Product[]) => void;
 }
 
 const ProductCombobox = ({ value, onChange }: ProductCombobox) => {
@@ -39,10 +40,10 @@ const ProductCombobox = ({ value, onChange }: ProductCombobox) => {
 
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const handleSelect = (optionValue: string) => {
-    const newValue = value.includes(optionValue)
-      ? value.filter((v) => v !== optionValue)
-      : [...value, optionValue];
+  const handleSelect = (product: Product) => {
+    const newValue = value.some((v) => v.id === product.id)
+      ? value.filter((v) => v.id !== product.id)
+      : [...value, product];
     onChange(newValue);
   };
 
@@ -110,12 +111,14 @@ const ProductCombobox = ({ value, onChange }: ProductCombobox) => {
                 <div
                   key={product.id}
                   className="flex w-full cursor-pointer items-center px-2 py-2 hover:bg-gray-100"
-                  onClick={() => handleSelect(product.id)}
+                  onClick={() => handleSelect(product)}
                 >
                   <Check
                     className={cn(
                       "mr-2 h-4 w-4",
-                      value.includes(product.id) ? "opacity-100" : "opacity-0",
+                      value.some((v) => v.id === product.id)
+                        ? "opacity-100"
+                        : "opacity-0",
                     )}
                   />
                   <div className="flex items-center gap-2">

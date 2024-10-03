@@ -358,12 +358,6 @@ export const sampleProductData: Product[] = [
   },
   {
     id: uuidv4(),
-    name: "Autumn Walk: Boots",
-    productCode: "AB-90123-456",
-    mainImage: "/images/sample-products/unsplash-13.jpg",
-  },
-  {
-    id: uuidv4(),
     name: "Winter Warmth: Coat",
     productCode: "WC-01234-567",
     mainImage: "/images/sample-products/unsplash-14.jpg",
