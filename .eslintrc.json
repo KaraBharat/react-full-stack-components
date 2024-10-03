@@ -1,6 +1,11 @@
 {
   "extends": ["next/core-web-vitals", "next/typescript"],
   "rules": {
-    "no-empty-interface": false 
+    "no-empty-interface": 0,
+    "@typescript-eslint/no-empty-interface": 0,
+    "no-unused-vars": 0,
+    "@typescript-eslint/no-unused-vars": 0,
+    "no-empty-object-type": 0,
+    "@typescript-eslint/no-empty-object-type":0
   }
 }

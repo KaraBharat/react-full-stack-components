@@ -12,6 +12,7 @@ import {
 } from "../schema/form-schema";
 import ProductCombobox from "./product-combo-box";
 import { Separator } from "@/components/ui/separator";
+import Image from "next/image";
 
 const CollectionForm = () => {
   const [submittedData, setSubmittedData] = useState<CollectionFormType | null>(
@@ -92,11 +93,14 @@ const CollectionForm = () => {
                     key={product.id}
                     className="mb-2 flex items-center gap-3 rounded bg-white p-2 shadow-sm"
                   >
-                    <img
-                      src={product.mainImage}
-                      alt={product.name}
-                      className="h-12 w-12 rounded object-cover"
-                    />
+                    <div className="relative size-12">
+                      <Image
+                        src={product.mainImage}
+                        alt={product.name}
+                        fill
+                        className="size-12 rounded-md object-cover"
+                      />
+                    </div>
                     <span>{product.name}</span>
                   </div>
                 ))}
