@@ -13,6 +13,7 @@ import {
 import ProductCombobox from "./product-combo-box";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
+import { Product } from "@/types/product";
 
 const CollectionForm = () => {
   const [submittedData, setSubmittedData] = useState<CollectionFormType | null>(
@@ -88,7 +89,7 @@ const CollectionForm = () => {
             <div>
               <Label className="font-bold">Selected Products:</Label>
               <div className="mt-2 max-h-[300px] overflow-y-auto">
-                {submittedData.products.map((product) => (
+                {submittedData.products.map((product: Product) => (
                   <div
                     key={product.id}
                     className="mb-2 flex items-center gap-3 rounded bg-white p-2 shadow-sm"
