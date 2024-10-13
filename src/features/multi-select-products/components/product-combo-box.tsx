@@ -15,6 +15,7 @@ import { Separator } from "@/components/ui/separator";
 import { useProducts } from "../hooks/use-products";
 import { cn } from "@/lib/utils";
 import { Product } from "@/types/product";
+import SelectedProducts from "./selected-products";
 
 interface ProductComboboxProps {
   value: Product[];
@@ -115,11 +116,29 @@ const ProductCombobox: React.FC<ProductComboboxProps> = ({
               aria-label="Search products"
             />
           </div>
+          {/* Selected products */}
+          {value.length > 0 && (
+            <>
+              <Separator />
+              {/* Selected products list */}
+              <div className="flex w-full items-center gap-2 p-2">
+                <SelectedProducts
+                  products={value}
+                  onRemove={(productId) => {
+                    // Remove the product from the list
+                    handleSelect(
+                      value.find((p) => p.id === productId) as Product,
+                    );
+                  }}
+                />
+              </div>
+            </>
+          )}
           <Separator />
           {/* Product list */}
           <div
             ref={containerRef}
-            className="flex max-h-[300px] w-full flex-col overflow-y-auto"
+            className="flex max-h-[250px] w-full flex-col overflow-y-auto"
             onScroll={handleScroll}
             role="listbox"
             aria-label="Product list"

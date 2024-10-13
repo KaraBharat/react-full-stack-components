@@ -14,6 +14,7 @@ import {
 } from "../schema/form-schema";
 import ProductCombobox from "./product-combo-box";
 import { Product } from "@/types/product";
+import SelectedProducts from "./selected-products";
 
 /**
  * CollectionForm Component
@@ -32,6 +33,9 @@ const CollectionForm: React.FC = () => {
     handleSubmit,
     control,
     reset,
+    setValue,
+    getValues,
+    watch,
     formState: { errors },
   } = useForm<CollectionFormType>({
     resolver: zodResolver(collectionFormSchema),
@@ -45,6 +49,13 @@ const CollectionForm: React.FC = () => {
   const onSubmit = async (data: CollectionFormType) => {
     console.log("submitted data", data);
     setSubmittedData(data);
+  };
+
+  const handleRemoveProduct = (productId: string) => {
+    setValue(
+      "products",
+      getValues("products").filter((p: Product) => p.id !== productId),
+    );
   };
 
   const handleCancel = () => {
@@ -74,7 +85,7 @@ const CollectionForm: React.FC = () => {
           </div>
 
           {/* Product Selection */}
-          <div className="flex flex-col items-start justify-between gap-4">
+          <div className="space-y-2">
             <Label htmlFor="products">Products *</Label>
             <Controller
               name="products"
@@ -97,6 +108,13 @@ const CollectionForm: React.FC = () => {
                 {errors.products.message}
               </p>
             )}
+            {/* Selected products */}
+            <div className="flex w-full items-center gap-2">
+              <SelectedProducts
+                products={watch("products")}
+                onRemove={handleRemoveProduct}
+              />
+            </div>
           </div>
         </div>
 
