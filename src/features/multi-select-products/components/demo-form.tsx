@@ -9,23 +9,22 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
-  collectionFormSchema,
-  CollectionFormType,
+  multiSelectComboBoxFormSchema,
+  MultiSelectComboBoxFormType,
 } from "../schema/form-schema";
 import ProductCombobox from "./product-combo-box";
 import { Product } from "@/types/product";
 import SelectedProducts from "./selected-products";
 
 /**
- * CollectionForm Component
+ * MultiSelectComboBoxForm Component
  *
  * This component renders a form for creating a collection with a name and selected products.
  * It also displays submitted data after form submission.
  */
-const CollectionForm: React.FC = () => {
-  const [submittedData, setSubmittedData] = useState<CollectionFormType | null>(
-    null,
-  );
+const MultiSelectComboBoxForm: React.FC = () => {
+  const [submittedData, setSubmittedData] =
+    useState<MultiSelectComboBoxFormType | null>(null);
 
   // Initialize react-hook-form
   const {
@@ -37,8 +36,8 @@ const CollectionForm: React.FC = () => {
     getValues,
     watch,
     formState: { errors },
-  } = useForm<CollectionFormType>({
-    resolver: zodResolver(collectionFormSchema),
+  } = useForm<MultiSelectComboBoxFormType>({
+    resolver: zodResolver(multiSelectComboBoxFormSchema),
     defaultValues: {
       name: "",
       products: [],
@@ -46,7 +45,7 @@ const CollectionForm: React.FC = () => {
   });
 
   // Form submission handler
-  const onSubmit = async (data: CollectionFormType) => {
+  const onSubmit = async (data: MultiSelectComboBoxFormType) => {
     console.log("submitted data", data);
     setSubmittedData(data);
   };
@@ -170,4 +169,4 @@ const CollectionForm: React.FC = () => {
   );
 };
 
-export default CollectionForm;
+export default MultiSelectComboBoxForm;

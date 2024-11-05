@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import CollectionForm from "./components/collection-form";
+import MultiSelectComboBoxForm from "./components/demo-form";
 
 // Component to demonstrate the CollectionForm with a multi-select combo box
-const CollectionFormDemo = () => {
+const MultiSelectComboBoxContainer = () => {
   return (
     <div className="flex w-full flex-col justify-center">
       <div className="flex flex-col p-4">
@@ -16,10 +16,13 @@ const CollectionFormDemo = () => {
           Start typing to search and make your selections.
         </p>
       </div>
-      {/* CollectionForm component to handle product selection */}
-      <CollectionForm aria-labelledby="combo-box-title" aria-describedby="combo-box-description" />
+      {/* MultiSelectComboBoxForm component to handle product selection */}
+      <MultiSelectComboBoxForm
+        aria-labelledby="combo-box-title"
+        aria-describedby="combo-box-description"
+      />
     </div>
   );
 };
 
-export default CollectionFormDemo;
+export default MultiSelectComboBoxContainer;

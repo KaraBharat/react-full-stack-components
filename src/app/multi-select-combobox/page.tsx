@@ -1,5 +1,5 @@
 import React from "react";
-import CollectionFormDemo from "@/features/multi-select-products";
+import MultiSelectComboBoxContainer from "@/features/multi-select-products";
 
 /**
  * Page Component
@@ -20,7 +20,7 @@ const Page: React.FC = () => {
           role="region"
           aria-label="Collection Form Section"
         >
-          <CollectionFormDemo />
+          <MultiSelectComboBoxContainer />
         </section>
       </div>
     </div>

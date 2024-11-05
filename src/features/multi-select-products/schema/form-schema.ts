@@ -1,10 +1,10 @@
 import { z } from "zod";
 
 // Define the schema for the collection form
-export const collectionFormSchema = z.object({
+export const multiSelectComboBoxFormSchema = z.object({
   // Name field: must be a non-empty string
   name: z.string().min(1, "Name is required"),
-  
+
   // Products field: must be an array of product objects with at least one product
   products: z
     .array(
@@ -18,4 +18,6 @@ export const collectionFormSchema = z.object({
 });
 
 // Type inference for the collection form schema
-export type CollectionFormType = z.infer<typeof collectionFormSchema>;
+export type MultiSelectComboBoxFormType = z.infer<
+  typeof multiSelectComboBoxFormSchema
+>;
