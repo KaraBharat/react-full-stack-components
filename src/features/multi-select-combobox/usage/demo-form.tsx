@@ -1,28 +1,36 @@
 "use client";
 
-import React, { useState } from "react";
+// External dependencies
+import { type FC, useState } from "react";
 import Image from "next/image";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+
+// UI Components
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+
+// Internal Components
+import ProductCombobox from "../components/product-combo-box";
+import SelectedProducts from "../components/selected-products";
+
+// Types and Schema
 import {
   multiSelectComboBoxFormSchema,
-  MultiSelectComboBoxFormType,
+  type MultiSelectComboBoxFormType,
 } from "../schema/form-schema";
-import ProductCombobox from "../components/product-combo-box";
-import { Product } from "@/types/product";
-import SelectedProducts from "../components/selected-products";
+import { type Product } from "@/types/product";
 
 /**
  * MultiSelectComboBoxForm Component
  *
- * This component renders a form for creating a collection with a name and selected products.
- * It also displays submitted data after form submission.
+ * A form component for creating collections with a name and multiple product selections.
+ * @returns {JSX.Element} The form component
  */
-const MultiSelectComboBoxForm: React.FC = () => {
+const MultiSelectComboBoxForm: FC = () => {
+  // State for tracking submitted data
   const [submittedData, setSubmittedData] =
     useState<MultiSelectComboBoxFormType | null>(null);
 

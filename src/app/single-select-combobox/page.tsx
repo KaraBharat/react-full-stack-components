@@ -1,37 +1,53 @@
-import React from "react";
+// External dependencies
+import { type FC } from "react";
+import { type Metadata } from "next";
+
+// Internal imports
 import SingleSelectComboBoxContainer from "@/features/single-select-combobox";
-import { Metadata } from "next";
 import { SINGLE_SELECT_COMBOBOX } from "@/constants/common";
 
 /**
- * Page Component
- *
- * This component renders the main page for the multi-select combobox demo.
- * It provides a centered layout for the SingleSelectComboBoxContainer component.
+ * Metadata configuration for the Single-select Combobox page
+ * Provides SEO-friendly title and description
  */
-
 export const metadata: Metadata = {
   title: SINGLE_SELECT_COMBOBOX.title,
   description: SINGLE_SELECT_COMBOBOX.description,
 };
 
-const Page: React.FC = () => {
+/**
+ * Single-select Combobox Demo Page
+ *
+ * Renders a demonstration of the single-select combobox component
+ * in a centered, responsive layout with proper accessibility attributes
+ *
+ * @returns {JSX.Element} The page component
+ */
+const Page: FC = () => {
   return (
-    <div
+    <main
       className="flex w-full items-center justify-center p-4 md:p-12"
-      role="main"
-      aria-label="Single-select Combobox Demo Page"
+      aria-labelledby="page-title"
     >
-      <div className="flex w-full items-center justify-center bg-white">
+      {/* Hidden title for accessibility */}
+      <h1 id="page-title" className="sr-only">
+        Single-select Combobox Demo Page
+      </h1>
+
+      {/* Container wrapper */}
+      <div
+        className="flex w-full items-center justify-center bg-white"
+        role="presentation"
+      >
+        {/* Demo section */}
         <section
           className="flex w-full max-w-[600px] items-center justify-center p-2"
-          role="region"
-          aria-label="Single Select Combobox Section"
+          aria-label="Single Select Combobox Demo"
         >
           <SingleSelectComboBoxContainer />
         </section>
       </div>
-    </div>
+    </main>
   );
 };
 

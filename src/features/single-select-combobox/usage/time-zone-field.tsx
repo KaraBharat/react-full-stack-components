@@ -1,42 +1,53 @@
 "use client";
 
 // External dependencies
-import React, { useState } from "react";
+import { type FC, useState } from "react";
 import { Check } from "lucide-react";
 
-// Internal UI components
-
+// UI Components
 import { CommandItem } from "@/components/ui/command";
-
-// Utilities and types
-import { cn } from "@/lib/utils";
 import { ComboBox } from "../components/single-select-combobox";
-import { TimeZone } from "../types";
+
+// Types and utilities
+import { type TimeZone } from "../types";
 import { timeZones } from "../data";
+import { cn } from "@/lib/utils";
+
+/**
+ * Formats a timezone offset into a standardized string
+ * @param {number} offset - The timezone offset in hours
+ * @returns {string} Formatted offset string (e.g., "UTC+01:00")
+ */
+const formatOffset = (offset: number): string => {
+  const sign = offset >= 0 ? "+" : "-";
+  const absOffset = Math.abs(offset);
+  const hours = Math.floor(absOffset);
+  const minutes = (absOffset % 1) * 60;
+
+  return `(UTC${sign}${hours.toString().padStart(2, "0")}:${minutes
+    .toString()
+    .padStart(2, "0")})`;
+};
+
+/**
+ * TimeZoneItem Component Props
+ */
+interface TimeZoneItemProps {
+  timeZone: TimeZone;
+  isSelected?: boolean;
+}
 
 /**
  * TimeZoneItem Component
- * Renders a time zone with name in a consistent format
- *
- * @component
- * @param {Object} props - Component props
- * @param {TimeZone} props.timeZone - Time zone data
+ * Renders a timezone option with formatted offset and name
  */
-const TimeZoneItem: React.FC<{ timeZone: TimeZone }> = ({ timeZone }) => {
-  const formatOffset = (offset: number): string => {
-    const sign = offset >= 0 ? "+" : "-";
-    const absOffset = Math.abs(offset);
-    const hours = Math.floor(absOffset);
-    const minutes = (absOffset % 1) * 60;
-
-    return `(UTC${sign}${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")})`;
-  };
-
+const TimeZoneItem: FC<TimeZoneItemProps> = ({ timeZone, isSelected }) => {
   return (
     <div
       className="flex items-center gap-2"
       role="option"
-      aria-label={`${timeZone.name}`}
+      aria-selected={isSelected}
+      aria-label={`${formatOffset(timeZone.offset)} ${timeZone.name}`}
     >
       <span className="truncate">
         {formatOffset(timeZone.offset)} {timeZone.name}
@@ -47,40 +58,56 @@ const TimeZoneItem: React.FC<{ timeZone: TimeZone }> = ({ timeZone }) => {
 
 /**
  * TimeZoneField Component
- * A form field component for selecting time zones with autocomplete functionality
- *
- * @component
+ * A form field component for selecting time zones with search and autocomplete
  */
-export const TimeZoneField: React.FC = () => {
+const TimeZoneField: FC = () => {
   const [selectedTimeZoneId, setSelectedTimeZoneId] = useState<string | null>(
     null,
   );
 
+  // Find the currently selected timezone
+  const selectedTimeZone = timeZones.find(
+    (timeZone) => timeZone.id === selectedTimeZoneId,
+  );
+
   return (
-    <div className="flex flex-col gap-2">
-      <label className="text-sm font-medium">Time zone</label>
+    <div
+      className="flex flex-col gap-2"
+      role="region"
+      aria-labelledby="timezone-field-label"
+    >
+      {/* Field Label */}
+      <label
+        id="timezone-field-label"
+        className="text-sm font-medium"
+        htmlFor="timezone-select"
+      >
+        Time zone
+      </label>
+
+      {/* Combobox Component */}
       <ComboBox
         placeholder="Select time zone..."
-        selectedItem={(() => {
-          const timeZone = timeZones.find(
-            (timeZone) => timeZone.id === selectedTimeZoneId,
-          );
-          return timeZone ? (
-            <TimeZoneItem timeZone={timeZone} />
+        selectedItem={
+          selectedTimeZone ? (
+            <TimeZoneItem timeZone={selectedTimeZone} isSelected={true} />
           ) : (
             "Select time zone..."
-          );
-        })()}
+          )
+        }
+        aria-labelledby="timezone-field-label"
       >
+        {/* Timezone Options */}
         {timeZones.map((timeZone) => (
           <CommandItem
             key={timeZone.id}
             value={timeZone.name}
             onSelect={() => setSelectedTimeZoneId(timeZone.id)}
+            className="cursor-pointer"
             role="option"
             aria-selected={selectedTimeZoneId === timeZone.id}
-            className="cursor-pointer"
           >
+            {/* Selection Indicator */}
             <Check
               className={cn(
                 "mr-2 h-4 w-4",
@@ -90,7 +117,12 @@ export const TimeZoneField: React.FC = () => {
               )}
               aria-hidden="true"
             />
-            <TimeZoneItem timeZone={timeZone} />
+
+            {/* Timezone Display */}
+            <TimeZoneItem
+              timeZone={timeZone}
+              isSelected={selectedTimeZoneId === timeZone.id}
+            />
           </CommandItem>
         ))}
       </ComboBox>
@@ -98,5 +130,4 @@ export const TimeZoneField: React.FC = () => {
   );
 };
 
-// Default export for cleaner imports
 export default TimeZoneField;

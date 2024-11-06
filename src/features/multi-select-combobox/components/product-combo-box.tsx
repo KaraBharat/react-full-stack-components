@@ -1,9 +1,12 @@
 "use client";
 
-import React, { useCallback, useEffect, useRef, useState } from "react";
+// External dependencies
+import { type FC, useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useDebounce } from "@uidotdev/usehooks";
 import { Check, ChevronsUpDown, Loader2, Search } from "lucide-react";
+
+// UI Components
 import {
   Popover,
   PopoverContent,
@@ -12,10 +15,12 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import SelectedProducts from "./selected-products";
+
+// Utilities and Types
 import { useProducts } from "../hooks/use-products";
 import { cn } from "@/lib/utils";
-import { Product } from "@/types/product";
-import SelectedProducts from "./selected-products";
+import { type Product } from "@/types/product";
 
 interface ProductComboboxProps {
   value: Product[];
@@ -25,16 +30,15 @@ interface ProductComboboxProps {
 /**
  * ProductCombobox Component
  *
- * This component renders a combobox for selecting multiple products.
- * It includes search functionality and infinite scrolling for product loading.
+ * A multi-select combobox component for products with search and infinite scroll functionality.
+ *
+ * @param {ProductComboboxProps} props - Component props
+ * @returns {JSX.Element} The combobox component
  */
-const ProductCombobox: React.FC<ProductComboboxProps> = ({
-  value,
-  onChange,
-}) => {
+const ProductCombobox: FC<ProductComboboxProps> = ({ value, onChange }) => {
+  // State management
   const [open, setOpen] = useState(false);
   const [searchTerm, setSearch] = useState("");
-
   const debouncedSearch = useDebounce(searchTerm, 500);
 
   // Fetch products using the custom hook

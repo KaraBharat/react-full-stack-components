@@ -1,29 +1,54 @@
 "use client";
 
-import React from "react";
+// External dependencies
+import { type FC } from "react";
+
+// Internal components
 import SingleSelectComboBoxForm from "./usage/usecases-demo";
+
+// Constants
 import { SINGLE_SELECT_COMBOBOX } from "@/constants/common";
 
-type Props = {};
+/**
+ * Props interface for SingleSelectComboBoxContainer
+ * Currently empty but maintained for future extensibility
+ */
+interface ContainerProps {}
 
-function SingleSelectComboBoxContainer({}: Props) {
+/**
+ * SingleSelectComboBoxContainer Component
+ *
+ * A container component that wraps the single select combobox demo.
+ * Provides a header with title and description, and renders the demo form.
+ *
+ * @returns {JSX.Element} The container component
+ */
+const SingleSelectComboBoxContainer: FC<ContainerProps> = () => {
   return (
-    <div className="flex w-full flex-col justify-center">
-      <div className="flex flex-col p-4">
-        <h2 className="text-2xl font-semibold" id="combo-box-title">
+    <div
+      className="flex w-full flex-col justify-center"
+      role="region"
+      aria-labelledby="combo-box-title"
+    >
+      {/* Header Section */}
+      <header className="flex flex-col p-4" role="banner">
+        <h2 id="combo-box-title" className="text-2xl font-semibold">
           {SINGLE_SELECT_COMBOBOX.title}
         </h2>
-        <p className="mt-2 text-sm text-gray-600" id="combo-box-description">
+        <p id="combo-box-description" className="mt-2 text-sm text-gray-600">
           {SINGLE_SELECT_COMBOBOX.formDescription}
         </p>
-      </div>
-      {/* SingleSelectComboBoxForm component to handle product selection */}
-      <SingleSelectComboBoxForm
-        aria-labelledby="combo-box-title"
-        aria-describedby="combo-box-description"
-      />
+      </header>
+
+      {/* Demo Form Section */}
+      <main role="main">
+        <SingleSelectComboBoxForm
+          aria-labelledby="combo-box-title"
+          aria-describedby="combo-box-description"
+        />
+      </main>
     </div>
   );
-}
+};
 
 export default SingleSelectComboBoxContainer;

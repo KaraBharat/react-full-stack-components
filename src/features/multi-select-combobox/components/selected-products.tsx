@@ -1,13 +1,24 @@
-import React from "react";
+// External dependencies
+import { type FC } from "react";
 import Image from "next/image";
 import { X } from "lucide-react";
+
+// UI Components
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Product } from "@/types/product";
 
+// Types
+import { type Product } from "@/types/product";
+
+/**
+ * Props interface for the SelectedProducts component
+ * @interface SelectedProductsProps
+ * @property {Product[]} products - Array of selected products to display
+ * @property {Function} onRemove - Callback function to handle product removal
+ */
 interface SelectedProductsProps {
   products: Product[];
   onRemove: (productId: string) => void;
@@ -16,10 +27,12 @@ interface SelectedProductsProps {
 /**
  * SelectedProducts Component
  *
- * This component displays a list of selected products with the ability to remove them.
- * Each product is shown as an image with a tooltip and a remove button.
+ * Displays a list of selected products with the ability to remove them.
+ *
+ * @param {SelectedProductsProps} props - Component props
+ * @returns {JSX.Element | null} The selected products list or null if empty
  */
-const SelectedProducts: React.FC<SelectedProductsProps> = ({
+const SelectedProducts: FC<SelectedProductsProps> = ({
   products,
   onRemove,
 }) => {
