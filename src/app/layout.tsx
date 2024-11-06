@@ -9,9 +9,8 @@ import AboutInfo from "@/components/about-info/about-info";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Multi Select Combo Box",
-  description:
-    "This combo box allows you to select multiple products from a list Start typing to search and make your selections.",
+  title: "Components Built with React, ShadcnUI and TailwindCSS",
+  description: "Ready to use react components for your next project",
 };
 
 export default function RootLayout({
@@ -25,7 +24,7 @@ export default function RootLayout({
         <TooltipProvider>
           <body className={`${inter.className} antialiased`}>
             {children}
-            <div className="absolute top-2 right-4 w-fit">
+            <div className="absolute right-4 top-2 w-fit">
               <AboutInfo />
             </div>
           </body>
