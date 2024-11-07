@@ -14,13 +14,13 @@ import SingleSelectComboboxPreview from "@/features/single-select-combobox/previ
  */
 const Home: FC = () => {
   return (
-    <main 
-      className="flex w-full items-center justify-center p-12"
+    <main
+      className="flex w-full items-center justify-center px-2 py-16 md:p-20"
       role="main"
       aria-label="Component showcase"
     >
-      <div 
-        className="flex flex-wrap items-center gap-8"
+      <div
+        className="flex w-full flex-wrap items-center justify-center gap-8"
         role="region"
         aria-label="Preview components"
       >

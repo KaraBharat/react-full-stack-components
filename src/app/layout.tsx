@@ -42,7 +42,7 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
             <main>{children}</main>
             {/* About info section positioned absolutely */}
             <div
-              className="absolute right-4 top-2 w-fit"
+              className="absolute right-2 top-2 w-fit md:right-4 md:top-4"
               role="complementary"
               aria-label="About information"
             >
