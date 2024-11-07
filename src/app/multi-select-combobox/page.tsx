@@ -17,16 +17,16 @@ export const metadata: Metadata = {
 
 /**
  * Multi-select Combobox Demo Page
- * 
+ *
  * Renders a demonstration of the multi-select combobox component
  * in a centered, responsive layout with proper accessibility attributes
- * 
+ *
  * @returns {JSX.Element} The page component
  */
 const Page: FC = () => {
   return (
-    <main 
-      className="flex w-full items-center justify-center p-4 md:p-12"
+    <main
+      className="flex w-full items-center justify-center px-2 py-16 md:p-20"
       aria-labelledby="page-title"
     >
       {/* Hidden title for accessibility */}
@@ -35,7 +35,7 @@ const Page: FC = () => {
       </h1>
 
       {/* Container wrapper */}
-      <div 
+      <div
         className="flex w-full items-center justify-center bg-white"
         role="presentation"
       >

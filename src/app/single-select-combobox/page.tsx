@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 const Page: FC = () => {
   return (
     <main
-      className="flex w-full items-center justify-center p-4 md:p-12"
+      className="flex w-full items-center justify-center px-2 py-16 md:p-20"
       aria-labelledby="page-title"
     >
       {/* Hidden title for accessibility */}
