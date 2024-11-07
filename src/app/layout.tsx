@@ -1,6 +1,9 @@
 // External dependencies
+import Link from "next/link";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Button } from "@/components/ui/button";
+import { HomeIcon } from "lucide-react";
 
 // Styles
 import "./globals.css";
@@ -39,6 +42,13 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
             // Add better accessibility support
             role="presentation"
           >
+            <div className="absolute left-2 top-2">
+              <Link href="/">
+                <Button size="icon" variant="ghost">
+                  <HomeIcon className="size-6"></HomeIcon>
+                </Button>
+              </Link>
+            </div>
             <main>{children}</main>
             {/* About info section positioned absolutely */}
             <div
