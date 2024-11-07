@@ -1,16 +1,41 @@
-// Import necessary modules from Next.js
-import { redirect } from "next/navigation";
+// External dependencies
+import { type FC } from "react";
 
-// Home component definition
-export default function Home() {
-  // Redirect to the multi-select-combobox page
-  redirect("/multi-select-combobox");
+// Feature components
+import MultiSelectComboboxPreview from "@/features/multi-select-combobox/preview";
+import SingleSelectComboboxPreview from "@/features/single-select-combobox/preview";
 
-  // Render the main content of the page
+/**
+ * Home Page Component
+ * Displays a showcase of combobox components including both
+ * single and multi-select variations
+ *
+ * @returns {JSX.Element} The home page component
+ */
+const Home: FC = () => {
   return (
-    <div>
-      {/* Main heading for the page */}
-      <h1 tabIndex={0}>Multi select dropdown</h1>
-    </div>
+    <main
+      className="flex w-full items-center justify-center px-2 py-16 md:p-20"
+      role="main"
+      aria-label="Component showcase"
+    >
+      <div
+        className="flex w-full flex-wrap items-center justify-center gap-8"
+        role="region"
+        aria-label="Preview components"
+      >
+        {/* Multi-select combobox demonstration */}
+        <section aria-label="Multi-select combobox example">
+          <MultiSelectComboboxPreview />
+        </section>
+
+        {/* Single-select combobox demonstration */}
+        <section aria-label="Single-select combobox example">
+          <SingleSelectComboboxPreview />
+        </section>
+      </div>
+    </main>
   );
-}
+};
+
+export default Home;

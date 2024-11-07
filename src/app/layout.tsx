@@ -1,31 +1,51 @@
+// External dependencies
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+
+// Styles
 import "./globals.css";
 
-import { Inter } from "next/font/google";
+// Internal components and providers
 import { QueryProviders } from "@/providers/query.provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import AboutInfo from "@/components/about-info/about-info";
 
+// Font configuration
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Multi Select Combo Box",
-  description:
-    "This combo box allows you to select multiple products from a list Start typing to search and make your selections.",
+  title: "Components Built with React, ShadcnUI and TailwindCSS",
+  description: "Ready to use react components for your next project",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+interface RootLayoutProps {
   children: React.ReactNode;
-}>) {
+}
+
+/**
+ * Root layout component that wraps the entire application
+ * Provides necessary providers and global styling
+ *
+ * @param {RootLayoutProps} props - Component props
+ * @returns {JSX.Element} The root layout structure
+ */
+export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
   return (
     <html lang="en">
       <QueryProviders>
         <TooltipProvider>
-          <body className={`${inter.className} antialiased`}>
-            {children}
-            <div className="absolute top-2 right-4 w-fit">
+          <body
+            className={`${inter.className} antialiased`}
+            // Add better accessibility support
+            role="presentation"
+          >
+            <main>{children}</main>
+            {/* About info section positioned absolutely */}
+            <div
+              className="absolute right-2 top-2 w-fit md:right-4 md:top-4"
+              role="complementary"
+              aria-label="About information"
+            >
               <AboutInfo />
             </div>
           </body>
