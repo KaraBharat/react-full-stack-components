@@ -1,7 +1,7 @@
 "use client";
 
 // External dependencies
-import { type FC, useState } from "react";
+import { type FC, useEffect, useState } from "react";
 import { ChevronsUpDown, Loader2 } from "lucide-react";
 
 // UI Components
@@ -32,6 +32,7 @@ interface ComboBoxProps {
   selectedItem: React.ReactNode;
   placeholder?: string;
   isLoading?: boolean;
+  closeOnSelect?: boolean;
 }
 
 /**
@@ -52,9 +53,17 @@ export const ComboBox: FC<ComboBoxProps> = ({
   selectedItem,
   placeholder = "Search...",
   isLoading = false,
+  closeOnSelect = true,
 }) => {
   // State for controlling popover
   const [open, setOpen] = useState(false);
+
+  // Close the popover when the selected item changes
+  useEffect(() => {
+    if (closeOnSelect) {
+      setOpen(false);
+    }
+  }, [selectedItem, closeOnSelect, setOpen]);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
