@@ -12,7 +12,7 @@ import { ComboBox } from "../components/single-select-combobox";
 // Types and Data
 import { type UserProfile } from "../types";
 import { userProfiles } from "../data";
-import { cn } from "@/lib/utils";
+import { cn, createInitials } from "@/lib/utils";
 
 /**
  * Props interface for UserItem component
@@ -22,16 +22,6 @@ interface UserItemProps {
   isSelected?: boolean;
 }
 
-/**
- * Creates initials from a full name
- * @param {string} name - Full name to create initials from
- * @returns {string} Initials string
- */
-const createInitials = (name: string): string =>
-  name
-    .split(" ")
-    .map((part) => part[0])
-    .join("");
 
 /**
  * UserItem Component
