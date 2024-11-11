@@ -21,7 +21,7 @@ const Home: FC = () => {
       aria-label="Component showcase"
     >
       <div
-        className="grid w-full max-w-[900px] grid-cols-1 gap-8 md:grid-cols-2"
+        className="grid grid-cols-1 gap-8 md:grid-cols-2"
         role="region"
         aria-label="Preview components"
       >
