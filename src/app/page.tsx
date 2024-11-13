@@ -4,6 +4,7 @@ import { type FC } from "react";
 // Feature components
 import MultiSelectComboboxPreview from "@/features/multi-select-combobox/preview";
 import SingleSelectComboboxPreview from "@/features/single-select-combobox/preview";
+import MultiSelectCombobox2Preview from "@/features/customized-multi-select-combobox/preview";
 
 /**
  * Home Page Component
@@ -20,7 +21,7 @@ const Home: FC = () => {
       aria-label="Component showcase"
     >
       <div
-        className="flex w-full flex-wrap items-center justify-center gap-8"
+        className="grid grid-cols-1 gap-8 md:grid-cols-2"
         role="region"
         aria-label="Preview components"
       >
@@ -32,6 +33,11 @@ const Home: FC = () => {
         {/* Single-select combobox demonstration */}
         <section aria-label="Single-select combobox example">
           <SingleSelectComboboxPreview />
+        </section>
+
+        {/* Multi-select combobox demonstration */}
+        <section aria-label="Multi-select combobox example">
+          <MultiSelectCombobox2Preview />
         </section>
       </div>
     </main>

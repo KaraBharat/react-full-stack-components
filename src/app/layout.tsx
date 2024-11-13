@@ -2,7 +2,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Button } from "@/components/ui/button";
 import { HomeIcon } from "lucide-react";
 
 // Styles
@@ -42,11 +41,9 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
             // Add better accessibility support
             role="presentation"
           >
-            <div className="absolute left-2 top-2">
+            <div className="absolute left-2 top-3 w-fit md:left-4 md:top-4">
               <Link href="/">
-                <Button size="icon" variant="ghost">
-                  <HomeIcon className="size-6"></HomeIcon>
-                </Button>
+                <HomeIcon className="size-6"></HomeIcon>
               </Link>
             </div>
             <main>{children}</main>
