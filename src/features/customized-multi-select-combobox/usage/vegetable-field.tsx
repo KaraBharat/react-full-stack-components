@@ -11,21 +11,16 @@ import {
 } from "@/components/ui/tooltip";
 
 // Internal dependencies
-import {
-  BaseOption,
-  MultiSelectCombobox,
-} from "../components/multi-select-combobox";
+import { MultiSelectCombobox } from "../components/multi-select-combobox";
 import { vegetables } from "../data";
+import { Vegetable } from "../types";
 
 /**
  * Extended option type for vegetable data
  * @interface VegetableOption
- * @extends BaseOption
+ * @extends Vegetable
  */
-interface VegetableOption extends BaseOption {
-  icon: string;
-  calories: number;
-}
+interface VegetableOption extends Vegetable {}
 
 /**
  * Props interface for VegetableField

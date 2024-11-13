@@ -11,21 +11,16 @@ import {
 } from "@/components/ui/tooltip";
 
 // Internal dependencies
-import {
-  BaseOption,
-  MultiSelectCombobox,
-} from "../components/multi-select-combobox";
+import { MultiSelectCombobox } from "../components/multi-select-combobox";
 import { aiModels } from "../data";
+import { AiModel } from "../types";
 
 /**
  * Extended option type for ai model data
  * @interface AiModelOption
- * @extends BaseOption
+ * @extends AiModel
  */
-interface AiModelOption extends BaseOption {
-  icon: string;
-  description: string;
-}
+interface AiModelOption extends AiModel {}
 
 /**
  * Props interface for AiModelField

@@ -46,20 +46,44 @@ export type OptionType = {
   value: string;
 };
 
-export type Vegetable = {
-  /** Unique identifier for the vegetable */
-  value: string;
-  /** Vegetable's name */
-  label: string;
-  /** URL to vegetable's icon image */
-  icon: string;
-  /** Calories per 100g */
+/**
+ * Vegetable Type
+ *
+ * Represents a vegetable option with nutritional information.
+ * Extends the base option interface with calories data.
+ *
+ * @example
+ * const carrot: Vegetable = {
+ *   value: "carrot",
+ *   label: "Carrot",
+ *   icon: "/icons/carrot.svg",
+ *   calories: 41
+ * };
+ */
+export type Vegetable = OptionType & {
+  /** Nutritional value - calories per 100g */
   calories: number;
+  /** URL to option's icon/image */
+  icon: string;
 };
 
-export type AiModel = {
-  value: string;
-  label: string;
-  icon: string;
+/**
+ * AI Model Type
+ *
+ * Represents an AI model option with additional description.
+ * Extends the base option interface with model description.
+ *
+ * @example
+ * const gpt4: AiModel = {
+ *   value: "gpt-4",
+ *   label: "GPT-4",
+ *   icon: "/icons/gpt4.svg",
+ *   description: "Advanced language model with enhanced capabilities"
+ * };
+ */
+export type AiModel = OptionType & {
+  /** Detailed description of the AI model */
   description: string;
+  /** URL to option's icon/image */
+  icon: string;
 };
