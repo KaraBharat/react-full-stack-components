@@ -8,6 +8,7 @@ import TaskPriorityField from "./task-priority-field";
 import TaskStatusField from "./task-status-field";
 import TaskAssigneeField from "./task-assignee-field";
 import VegetableField from "./vegetable-field";
+import AiModelField from "./ai-model-field";
 
 /**
  * MultiSelectComboboxUseCases Component
@@ -18,7 +19,8 @@ import VegetableField from "./vegetable-field";
  * - Task status selection
  * - Task priority selection
  * - Task assignee selection
- *
+ * - Vegetable selection
+ * - Ai model selection
  * Each field is independently managed and demonstrates different aspects
  * of the combobox functionality.
  *
@@ -39,6 +41,11 @@ const MultiSelectComboboxUseCases: FC = () => {
       {/* Vegetable filter */}
       <section className="p-2">
         <VegetableField />
+      </section>
+
+      {/* Ai model filter */}
+      <section className="p-2">
+        <AiModelField />
       </section>
 
       {/* Task type filter */}

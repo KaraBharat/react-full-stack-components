@@ -46,7 +46,6 @@ export type OptionType = {
   value: string;
 };
 
-
 export type Vegetable = {
   /** Unique identifier for the vegetable */
   value: string;
@@ -56,4 +55,11 @@ export type Vegetable = {
   icon: string;
   /** Calories per 100g */
   calories: number;
+};
+
+export type AiModel = {
+  value: string;
+  label: string;
+  icon: string;
+  description: string;
 };

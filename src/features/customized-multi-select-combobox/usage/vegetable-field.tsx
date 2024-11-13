@@ -4,7 +4,6 @@
 import { type FC, useState } from "react";
 
 // UI Components
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Tooltip,
   TooltipContent,
@@ -17,7 +16,6 @@ import {
   MultiSelectCombobox,
 } from "../components/multi-select-combobox";
 import { vegetables } from "../data";
-import { createInitials } from "@/lib/utils";
 
 /**
  * Extended option type for vegetable data

@@ -1,4 +1,4 @@
-import { OptionType, UserProfile, Vegetable } from "../types";
+import { AiModel, OptionType, UserProfile, Vegetable } from "../types";
 
 export const taskTypes: OptionType[] = [
   { label: "Bug", value: "bug" },
@@ -125,4 +125,61 @@ export const vegetables: Vegetable[] = [
   { value: "celery", label: "Celery", icon: "🌱", calories: 16 },
   { value: "parsley", label: "Parsley", icon: "🪴", calories: 36 },
   { value: "okra", label: "Okra", icon: "🥭", calories: 33 },
+];
+
+export const aiModels: AiModel[] = [
+  {
+    value: "gpt_model",
+    label: "GPT Model",
+    icon: "🤖",
+    description: "Generate text, answer questions",
+  },
+  {
+    value: "stable_diffusion",
+    label: "Stable Diffusion",
+    icon: "🎨",
+    description: "Text-to-image generation",
+  },
+  {
+    value: "sentiment_analysis",
+    label: "Sentiment Analysis",
+    icon: "😊",
+    description: "Analyze emotional tone in text",
+  },
+  {
+    value: "recommendation",
+    label: "Recommendation Engine",
+    icon: "📈",
+    description: "Suggest products or content",
+  },
+  {
+    value: "ocr",
+    label: "OCR (Text Extraction)",
+    icon: "📝",
+    description: "Extract text from images",
+  },
+  {
+    value: "data_preprocessing",
+    label: "Data Preprocessing",
+    icon: "📂",
+    description: "Clean and prepare data for analysis",
+  },
+  {
+    value: "image_classification",
+    label: "Image Classification",
+    icon: "🖼️",
+    description: "Classify images into categories",
+  },
+  {
+    value: "object_detection",
+    label: "Object Detection",
+    icon: "🔍",
+    description: "Identify objects in images",
+  },
+  {
+    value: "time_series_forecasting",
+    label: "Time Series Forecasting",
+    icon: "📊",
+    description: "Predict future data points",
+  },
 ];
