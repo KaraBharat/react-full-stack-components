@@ -83,8 +83,8 @@ const TaskPriorityField: FC<TaskPriorityFieldProps> = ({ className }) => {
         aria-describedby="priority-field-description"
       />
       <span id="priority-field-description" className="sr-only">
-        Select one or more task priorities. Shows priority names joined by 'and'
-        when 2 or fewer are selected.
+        Select one or more task priorities. Shows priority names joined by
+        &apos;and&apos; when 2 or fewer are selected.
       </span>
     </div>
   );
