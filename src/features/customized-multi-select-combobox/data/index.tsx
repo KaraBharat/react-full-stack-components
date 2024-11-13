@@ -1,4 +1,4 @@
-import { OptionType, UserProfile } from "../types";
+import { OptionType, UserProfile, Vegetable } from "../types";
 
 export const taskTypes: OptionType[] = [
   { label: "Bug", value: "bug" },
@@ -93,4 +93,36 @@ export const userProfiles: UserProfile[] = [
     name: "William Zhang",
     avatar: "/images/avatar/15.jpg",
   },
+];
+
+export const vegetables: Vegetable[] = [
+  { value: "spinach", label: "Spinach", icon: "🥬", calories: 23 },
+  { value: "broccoli", label: "Broccoli", icon: "🥦", calories: 55 },
+  { value: "carrots", label: "Carrots", icon: "🥕", calories: 41 },
+  { value: "kale", label: "Kale", icon: "🌿", calories: 33 },
+  { value: "cauliflower", label: "Cauliflower", icon: "🥦", calories: 25 },
+  { value: "bell_pepper", label: "Bell Pepper", icon: "🌶️", calories: 31 },
+  { value: "asparagus", label: "Asparagus", icon: "🍀", calories: 20 },
+  { value: "tomato", label: "Tomato", icon: "🍅", calories: 18 },
+  { value: "zucchini", label: "Zucchini", icon: "🥒", calories: 17 },
+  { value: "sweet_potato", label: "Sweet Potato", icon: "🍠", calories: 86 },
+  { value: "cucumber", label: "Cucumber", icon: "🥒", calories: 16 },
+  { value: "onion", label: "Onion", icon: "🧅", calories: 40 },
+  { value: "mushroom", label: "Mushroom", icon: "🍄", calories: 22 },
+  { value: "pumpkin", label: "Pumpkin", icon: "🎃", calories: 26 },
+  { value: "green_beans", label: "Green Beans", icon: "🍃", calories: 31 },
+  { value: "eggplant", label: "Eggplant", icon: "🍆", calories: 25 },
+  { value: "lettuce", label: "Lettuce", icon: "🥗", calories: 15 },
+  {
+    value: "brussels_sprouts",
+    label: "Brussels Sprouts",
+    icon: "🟢",
+    calories: 43,
+  },
+  { value: "radish", label: "Radish", icon: "🌰", calories: 16 },
+  { value: "cabbage", label: "Cabbage", icon: "🍈", calories: 25 },
+  { value: "beetroot", label: "Beetroot", icon: "🍠", calories: 43 },
+  { value: "celery", label: "Celery", icon: "🌱", calories: 16 },
+  { value: "parsley", label: "Parsley", icon: "🪴", calories: 36 },
+  { value: "okra", label: "Okra", icon: "🥭", calories: 33 },
 ];

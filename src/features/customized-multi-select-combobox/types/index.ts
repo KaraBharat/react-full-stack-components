@@ -45,3 +45,15 @@ export type OptionType = {
   /** Underlying value for the option */
   value: string;
 };
+
+
+export type Vegetable = {
+  /** Unique identifier for the vegetable */
+  value: string;
+  /** Vegetable's name */
+  label: string;
+  /** URL to vegetable's icon image */
+  icon: string;
+  /** Calories per 100g */
+  calories: number;
+};

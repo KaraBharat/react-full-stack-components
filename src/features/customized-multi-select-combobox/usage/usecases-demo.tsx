@@ -7,6 +7,7 @@ import TaskTypeField from "./task-type-field";
 import TaskPriorityField from "./task-priority-field";
 import TaskStatusField from "./task-status-field";
 import TaskAssigneeField from "./task-assignee-field";
+import VegetableField from "./vegetable-field";
 
 /**
  * MultiSelectComboboxUseCases Component
@@ -30,6 +31,16 @@ const MultiSelectComboboxUseCases: FC = () => {
       role="region"
       aria-label="Multi-select combobox examples"
     >
+      {/* Task assignee filter */}
+      <section className="p-2">
+        <TaskAssigneeField />
+      </section>
+
+      {/* Vegetable filter */}
+      <section className="p-2">
+        <VegetableField />
+      </section>
+
       {/* Task type filter */}
       <section className="p-2">
         <TaskTypeField />
@@ -43,11 +54,6 @@ const MultiSelectComboboxUseCases: FC = () => {
       {/* Task status filter */}
       <section className="p-2">
         <TaskStatusField />
-      </section>
-
-      {/* Task assignee filter */}
-      <section className="p-2">
-        <TaskAssigneeField />
       </section>
     </div>
   );
